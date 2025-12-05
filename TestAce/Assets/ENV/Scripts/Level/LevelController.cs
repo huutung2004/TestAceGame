@@ -8,9 +8,10 @@ public class LevelController : MonoBehaviour
 {
     public static LevelController Instance { get; private set; }
     private int _StartlevelUnlocked = 1;
-    private int totalMapUnlocked;
+    [SerializeField] private List<LevelData> _levelDatas;
+    [SerializeField] private int totalMapUnlocked;
     //event
-    public static event Action<int> OnLoadLevel;
+    public static event Action<int,Character> OnLoadLevel;
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -30,8 +31,13 @@ public class LevelController : MonoBehaviour
     }
     public void Loadlevel(int level)
     {
-        SceneManager.LoadScene($"level{level}");
-        OnLoadLevel?.Invoke(level);
+        SceneManager.LoadScene("Play");
+        StartCoroutine(InvokeAfterLoad(level));
+    }
+    private IEnumerator InvokeAfterLoad(int level)
+    {
+        yield return null;
+        OnLoadLevel?.Invoke(level, CharacterManager.Instance.GetCharacterSelected());
     }
     public void UnlockLevel() {
         totalMapUnlocked++;

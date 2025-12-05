@@ -8,6 +8,7 @@ public struct Character
 {
     public string _nameofCharacter;
     public Sprite _previewCharacter;
+    public GameObject _characterPrefabs;
     public string _description;
 
 }
