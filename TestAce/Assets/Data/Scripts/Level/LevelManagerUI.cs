@@ -99,6 +99,7 @@ public class LevelManagerUI : MonoBehaviour
 
             btn.onClick.AddListener(() =>
             {
+                MusicManager.Instance.PlayMusic("tap");
                 string levelStr = localBtn.GetComponentInChildren<TMP_Text>().text;
                 int level = int.Parse(levelStr);
                 LevelController.Instance.Loadlevel(level);

@@ -12,9 +12,22 @@ public class CharacterFoot : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.CompareTag("Enemy")) return;
-
         Enemy enemy = other.GetComponent<Enemy>();
         if (enemy == null) return;
         enemy.OnStomped(character);
+        StartCoroutine(InvinceTime(1f));
     }
+    private IEnumerator InvinceTime(float time) {
+        CharacterHealth.Instance.SetInvince(true);
+        yield return new WaitForSeconds(time);
+        CharacterHealth.Instance.SetInvince(false);
+
+    }
+    //private void OnTriggerStay2D(Collider2D other)
+    //{
+    //    if (!other.CompareTag("Enemy")) return;
+    //    Enemy enemy = other.GetComponent<Enemy>();
+    //    if (enemy == null) return;
+    //    enemy.OnStomped(character);
+    //}
 }

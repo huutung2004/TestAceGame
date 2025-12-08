@@ -18,9 +18,10 @@ public class CharacterMovenemt : MonoBehaviour
         _animator = GetComponent<Animator>();
         _characterHeal = GetComponent<CharacterHealth>();
         _colider = GetComponent<BoxCollider2D>();
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Character"), LayerMask.NameToLayer("Enemy"), false);
 
     }
-    private void Update()
+    private void FixedUpdate()
     {
         if (isKnocked) return;
         float moveX = 0f;
@@ -39,6 +40,7 @@ public class CharacterMovenemt : MonoBehaviour
         if (UIInputController.Instance.isJump && isGrounded)
         {
             _rigidbody.AddForce(Vector2.up * _jumpforce, ForceMode2D.Impulse);
+            MusicManager.Instance.PlayMusic("jump");
             UIInputController.Instance.isJump = false;
         }
         HandleAnimation(lastDir);
@@ -58,7 +60,6 @@ public class CharacterMovenemt : MonoBehaviour
         float dir = (transform.position.x < transform.position.x) ? -1 : 1;
         Vector2 knockForce = new Vector2(dir * 2f, 4f);
         KnockBack(knockForce, _characterHeal.GetInvinceTime());
-
     }
     private void OnCollisionExit2D(Collision2D collision)
     {

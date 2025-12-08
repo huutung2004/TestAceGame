@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7185212522463024932}
   - component: {fileID: 6602676969001058318}
   - component: {fileID: 414713577810913633}
+  - component: {fileID: 2812954014590184721}
   m_Layer: 8
   m_Name: Snail
   m_TagString: Enemy
@@ -128,6 +129,7 @@ MonoBehaviour:
   worldA: {x: 0, y: 0, z: 0}
   worldB: {x: 0, y: 0, z: 0}
   _particalDie: {fileID: 8325296111694215028, guid: 7246fdf0e120b114b9a1d6908277cac9, type: 3}
+  heal: 2
 --- !u!61 &414713577810913633
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -137,7 +139,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 4282407693512504051}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 358cdd0c0c58e24438519256a14bb076, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -173,3 +175,30 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.97469777, y: 0.69543535}
   m_EdgeRadius: 0
+--- !u!50 &2812954014590184721
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4282407693512504051}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

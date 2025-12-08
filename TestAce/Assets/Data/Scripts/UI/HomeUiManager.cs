@@ -17,7 +17,8 @@ public class HomeUiManager : MonoBehaviour
     }
     public void ToggleListLevelUI()
     {
-        if(_listLevelUI.gameObject.activeSelf)
+        MusicManager.Instance.PlayMusic("tap");
+        if (_listLevelUI.gameObject.activeSelf)
         {
             _listLevelUI.gameObject.SetActive(false);
         }
@@ -28,6 +29,8 @@ public class HomeUiManager : MonoBehaviour
     }
     public void ToggleSelectCharacterUI()
     {
+        MusicManager.Instance.PlayMusic("tap");
+
         if (_selectCharacterUI.IsActive())
         {
             _selectCharacterUI.gameObject.SetActive(false);
@@ -40,6 +43,8 @@ public class HomeUiManager : MonoBehaviour
     }
     public void ToggleSettingUI()
     {
+        MusicManager.Instance.PlayMusic("tap");
+
         if (_settingUI.IsActive())
         {
             _settingUI.gameObject.SetActive(false);

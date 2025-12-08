@@ -12,7 +12,7 @@ public class EnemyPatrolState : EnemyState
     public override void Enter()
     {
         bool faceLeft = (target.x < enemy.transform.position.x);
-        enemy.PlayRun(faceLeft);
+            enemy.PlayRun(faceLeft);
     }
     public override void Update()
     {
@@ -21,7 +21,6 @@ public class EnemyPatrolState : EnemyState
             target,
             enemy.speed * Time.deltaTime
         );
-
         if (Vector3.Distance(enemy.transform.position, target) < 0.05f)
         {
             Vector3 next = (target == enemy.worldA) ? enemy.worldB : enemy.worldA;

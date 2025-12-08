@@ -34,6 +34,8 @@ public class EndLevelManagerUI : MonoBehaviour
     }
     private void ShowPanelWinLevel()
     {
+        MusicManager.Instance.PlayMusic("win");
+
         _panelWinLevel.gameObject.SetActive(true);
         LevelData levelData = LoadLevelManager.Instance.GetCurrentLevelData();
 
@@ -64,37 +66,40 @@ public class EndLevelManagerUI : MonoBehaviour
             LevelController.Instance.UnlockLevel();
         levelData.currentStar = levelData.currentStar >= star ? levelData.currentStar : star;
         LevelController.Instance.SaveProgress();
-        Time.timeScale = 0f;
     }
     private void ShowPanelFailLevel()
     {
-        _panelFailLevel.gameObject.SetActive(true);
+        MusicManager.Instance.PlayMusic("fail");
 
+        _panelFailLevel.gameObject.SetActive(true);
     }
     public void NextLevel()
     {
+        MusicManager.Instance.PlayMusic("tap");
+
         LoadLevelManager load = LoadLevelManager.Instance;
         load.Load(load.GetCurrentLevel() + 1, CharacterManager.Instance.GetCharacterSelected());
         _panelWinLevel.gameObject.SetActive(false);
         FruitsManager.Instance.ResetFruit();
         OnPlay?.Invoke();
-        Time.timeScale = 1f;
 
     }
     public void RePlay()
     {
+        MusicManager.Instance.PlayMusic("tap");
+
         LoadLevelManager load = LoadLevelManager.Instance;
         load.Load(load.GetCurrentLevel(), CharacterManager.Instance.GetCharacterSelected());
         _panelWinLevel.gameObject.SetActive(false);
         _panelFailLevel.gameObject.SetActive(false);
         FruitsManager.Instance.ResetFruit();
         OnPlay?.Invoke();
-        Time.timeScale = 1f;
 
     }
     public void BackToHome()
     {
-        Time.timeScale = 1f;
+        MusicManager.Instance.PlayMusic("tap");
+
         SceneManager.LoadScene("Home");
     }
 }

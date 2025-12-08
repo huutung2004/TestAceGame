@@ -37,6 +37,8 @@ public class UIInputController : MonoBehaviour
     }
     public void ToggleSetting()
     {
+        MusicManager.Instance.PlayMusic("tap");
+
         if (_panelSetting.IsActive())
         {
             _panelSetting.gameObject.SetActive(false);

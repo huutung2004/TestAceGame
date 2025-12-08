@@ -13,7 +13,7 @@ public class EnemyIdleState : EnemyState
     {
         timer = enemy.idleTime;
         bool faceLeft = (nextTarget.x < enemy.transform.position.x);
-        enemy.PlayIdle(faceLeft);
+            enemy.PlayIdle(faceLeft);
     }
 
     public override void Update()

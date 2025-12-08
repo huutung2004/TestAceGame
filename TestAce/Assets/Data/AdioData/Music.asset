@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5593c0ae792ae4c88bbec006fd079d, type: 3}
+  m_Name: Music
+  m_EditorClassIdentifier: 
+  audioEntries:
+  - _name: chill
+    _clip: {fileID: 8300000, guid: 4ad3e1285c1ab104e87caafbfbffa376, type: 3}
+    _type: 1
+  - _name: fail
+    _clip: {fileID: 8300000, guid: 7a8fc584eeed5f44295405c1c54a86da, type: 3}
+    _type: 0
+  - _name: win
+    _clip: {fileID: 8300000, guid: 34a71a5dc885b3a4581360a80d1d43d3, type: 3}
+    _type: 0
+  - _name: take
+    _clip: {fileID: 8300000, guid: 465e0c4eae8e6514ab8b3b782c3afd0f, type: 3}
+    _type: 0
+  - _name: tap
+    _clip: {fileID: 8300000, guid: 688c205d8c111f14f9a9ae4c9f447aa0, type: 3}
+    _type: 0
+  - _name: hurt
+    _clip: {fileID: 8300000, guid: 3a060c8dd49ea564e8a5285988d83dd6, type: 3}
+    _type: 0
+  - _name: jump
+    _clip: {fileID: 8300000, guid: 94869b6e501cc2a45b4da0c263e6f936, type: 3}
+    _type: 0

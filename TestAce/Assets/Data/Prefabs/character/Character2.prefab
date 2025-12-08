@@ -209,7 +209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da1782e9e704bdb488e2877a66699c5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  maxHeal: 3
+  deathEffect: {fileID: 8325296111694215028, guid: 7246fdf0e120b114b9a1d6908277cac9, type: 3}
   invincibleDuration: 1.3
 --- !u!1001 &6613854314721473177
 PrefabInstance:
@@ -225,11 +226,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8670020640794391570, guid: 3f4732688ee8d2f40b2c5a59c7f6ca4f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.012
+      value: -0.0026
       objectReference: {fileID: 0}
     - target: {fileID: 8670020640794391570, guid: 3f4732688ee8d2f40b2c5a59c7f6ca4f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.041
+      value: -0.093
       objectReference: {fileID: 0}
     - target: {fileID: 8670020640794391570, guid: 3f4732688ee8d2f40b2c5a59c7f6ca4f, type: 3}
       propertyPath: m_LocalPosition.z

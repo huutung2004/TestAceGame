@@ -34,14 +34,20 @@ public class SelectCharacterUI : MonoBehaviour
     }
     public void OnClickBack()
     {
+        MusicManager.Instance.PlayMusic("tap");
+
         CharacterManager.Instance.ChangeSelectedCharacter(-1);
     }
     public void OnClickNext()
     {
+        MusicManager.Instance.PlayMusic("tap");
+
         CharacterManager.Instance.ChangeSelectedCharacter(1);
     }
     public void OnBuyCharacter()
     {
+        MusicManager.Instance.PlayMusic("tap");
+
         var character = CharacterManager.Instance.GetCharacterSelect();
         if (GoldManager.Instance.GetCurrentGold() < character.price)
             return;

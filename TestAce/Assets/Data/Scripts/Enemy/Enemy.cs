@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -13,8 +14,8 @@ public abstract class Enemy : MonoBehaviour
     private Animator animator;
     [HideInInspector] public Vector3 worldA;
     [HideInInspector] public Vector3 worldB;
-    [SerializeField] private GameObject _particalDie;
-
+    [SerializeField] private int heal = 1;
+    public bool isShell = false;
     protected EnemyState currentState;
 
     public void ChangeState(EnemyState newState)
@@ -43,12 +44,24 @@ public abstract class Enemy : MonoBehaviour
     }
     public void PlayIdle(bool isLeft)
     {
+        if (IsShell()) {
+            string state = isLeft ? "shellHit_l" : "shellHit_r";
+            PlayAnimationSafe(state);
+            return;
+           };
         string stateName = isLeft ? "idle" : "idle_r";
         PlayAnimationSafe(stateName);
     }
 
     public void PlayRun(bool isLeft)
     {
+        if (IsShell())
+        {
+            string state = isLeft ? "shellHit_l" : "shellhit_r";
+            PlayAnimationSafe(state);
+            return;
+        }
+        ;
         string stateName = isLeft ? "run" : "run_r";
         PlayAnimationSafe(stateName);
     }
@@ -61,19 +74,35 @@ public abstract class Enemy : MonoBehaviour
 
         Gizmos.color = Color.green;
         Gizmos.DrawSphere(worldA, 0.1f);
-
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(worldB, 0.1f);
 
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(worldA, worldB);
     }
-    public void OnStomped(CharacterHealth character)
+    public  void OnStomped(CharacterHealth character)
     {
+        int dir = character.transform.position.x < transform.position.x ? 1 : -1;
         if (character.IsInvincible()) return;
-        Instantiate(_particalDie, transform.position + new Vector3(0, 0.5f, 0), transform.rotation);
-        Destroy(gameObject);
-        Debug.Log("Enemy die");
+        heal = heal -1;
+        if (heal <= 0)
+        {
+            var obj2 = ParaticalPool.Instance.Get();
+            obj2.gameObject.transform.position = transform.position;
+            StartCoroutine(StartDestroy(obj2));
+            return;
+        }
+        string state;
+        if(dir == -1)
+        {
+            state = "shellHit_l";
+        }
+        else
+        {
+            state = "shellHit_r";
+        }
+        PlayAnimationSafe(state);
+        SetShell();
     }
     private void PlayAnimationSafe(string stateName)
     {
@@ -85,5 +114,24 @@ public abstract class Enemy : MonoBehaviour
             anim.Play(hash);
         }
     }
+    private void SetShell()
+    {
+        isShell = true;
+
+    }
+
+    public bool IsShell()
+    {
+        return isShell;
+    }
+    private IEnumerator StartDestroy(Transform obj)
+    {
+        gameObject.GetComponent<Collider2D>().enabled = false;
+        gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        yield return new WaitForSeconds(0.3f);
+        ParaticalPool.Instance.ReturnToPool(obj);
+        Destroy(gameObject);
+    }
+
 
 }
